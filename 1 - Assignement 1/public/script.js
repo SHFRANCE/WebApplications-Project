@@ -1,6 +1,4 @@
 const canvas = document.getElementById('canvas')
-const save_btn = document.getElementById('save')
-// initiating 2D context on it
 const c = canvas.getContext('2d')
 
 var socket = io();
@@ -87,12 +85,11 @@ window.addEventListener('mouseup', e => {
     }
 });
 
-//SAVE IMAGE 
+//OPEN IMAGE IN NEW TAB 
 
-function save(){
-	var w = window.open(canvas.toDataURL("image/png"));
+function open_tab(){
+    var w = window.open(canvas.toDataURL("image/png"));
     w.document.write("<img src='" + canvas.toDataURL("image/png") + "' alt = 'canvas_image'/>");
-	//window.open(canvas.toDataURL("image/png"));
 }
 
 //FIGURE
