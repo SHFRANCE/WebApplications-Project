@@ -1,20 +1,24 @@
 const apiKey="dbe3286ef3754814bfd21bcd7e768db6"
+
 var movie = document.getElementById("quiz");
 var head = document.getElementById("top");
+var f = document.getElementById("form");
+
 var q = 1;
 var list1=[];
 var answers1=[];
 var list2=[];
 var answers2=["toy story"];
-var list3=new Array();
 var j=0;
 var key_search="key-search".concat(j);
 var key_search2 = "key-search2".concat(j);
 var score = 0;
 var fail = 0;
+
 let baseURL = 'https://api.themoviedb.org/3/';
 let configData = null;
 let baseImageURL = null;
+
 window.alert("Welcome to the MovieQuiz ! 😇 You will have to guess either an actor/director name or movie title. If you give a right answer within 3 chances, you gain 1 point but if you use more guesses, than you lose 1 point. Don't worry, your score can't be negative 😉");
 
 let getConfig = function () {
@@ -26,9 +30,6 @@ let getConfig = function () {
 	.then((data)=>{
 		baseImageURL = data.images.secure_base_url;
 		configData = data.images;
-		console.log('config:', data);
-		console.log('config fetched');
-
 		runSearchMovie('Toy Story')
 	})
 	.catch(function(err){
@@ -46,15 +47,11 @@ let runSearchMovie = function (keyword) {
 		movie.innerHTML += "<br>" + data["results"][0]["original_title"] ;
 		movie.innerHTML += "<br>" + data["results"][0]["release_date"];
 		poster = `https://image.tmdb.org/t/p/w500/${data["results"][0]["poster_path"]}`
-		//console.log(poster)
 		movie.innerHTML += "<br> <br> <img style='border:4px solid;' src = " + poster + " width='200' height='300' />";
 		movie.innerHTML += "<br><br> <form><input type='search' id='" + key_search.concat(j) + "' placeholder='Enter director/actor name...'>"
 		movie.innerHTML += "<br> <br> <button onclick='search()'>Submit</button> </form>";
 		id = data["results"][0]["id"];
 		runCredits(id);   
-		
-		
-		
 	})
 }
 
@@ -64,6 +61,7 @@ let runCredits = function (id) {
 	.then(response=>response.json())
 	.then((data)=>{
 		for(i = 0; i < data["cast"].length; i++) { list1.push(data["cast"][i]["name"].toLowerCase());}
+		for(i = 0; i < data["crew"].length; i++) {list1.push([data["crew"][i]["name"]][0].toLowerCase());}
 	})
 }
 
@@ -82,7 +80,7 @@ let runMovies = function (id) {
 	fetch(url)
 	.then(response=>response.json())
 	.then((data)=>{
-		for(i = 0; i < data["cast"].length; i++) { if([data["cast"][i]["title"]][0] != undefined) { list2.push([data["cast"][i]["title"]][0].toLowerCase()); }}
+		for(i = 0; i < data["cast"].length; i++) { if([data["cast"][i]["title"]][0] != undefined) { list2.push([data["cast"][i]["title"]][0].toLowerCase());}}
 	})
 }
 
@@ -135,7 +133,8 @@ function search(){
 		fail += 1;
 		if(fail > 3 & fail <=4) { score = score - 1 };
 		}
-		if (fail > 4) { fail = 0; }
+	if (fail > 4) { fail = 0; }
+	return false;
 }
 
 function search2(){
@@ -159,9 +158,9 @@ function search2(){
 		fail += 1;
 		if(fail > 3 & fail <=4) { score = score - 1 };
 		}
-		if (fail > 4) { fail = 0; }
+	if (fail > 4) { fail = 0; }
+	return false;
 }
 
 document.addEventListener('DOMContentLoaded', getConfig);
-		
-
+	
