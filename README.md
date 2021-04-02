@@ -1,9 +1,9 @@
 # WebApplications-Project
 
-<u> Assignement 1 : </u>
+<strong>Assignement 1 :</strong>
 
-You can find my app on https://guarded-shelf-52735.herokuapp.com/ :)
+You can find my app on https://guarded-shelf-52735.herokuapp.com/ 😇
 
-Assignement 3 : 
+<strong>Assignement 3 :</strong> 
 
-You can find my app on https://polar-stream-89509.herokuapp.com/ :)
+You can find my app on https://polar-stream-89509.herokuapp.com/ 😇
