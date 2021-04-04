@@ -187,3 +187,6 @@ function search2(){
 }
 
 document.addEventListener('DOMContentLoaded', getConfig);
+
+//NB: I tried to put everything into a form but I couldn't find any way to resolve the bug of refreshing the page when pressing Enter. 
+//I then decided that it was better to not have any bug than have a formal form.
