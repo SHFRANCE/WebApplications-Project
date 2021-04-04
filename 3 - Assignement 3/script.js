@@ -56,9 +56,7 @@ let runSearchMovie = function (keyword) {
 		poster = `https://image.tmdb.org/t/p/w500/${data["results"][0]["poster_path"]}`
 		movie.innerHTML += "<br> <br> <img style='border:4px solid;' src = " + poster + " width='200' height='300' />";
 		movie.innerHTML += "<br><br> <input type='search' id='" + key_search.concat(j) + "' placeholder='Enter director/actor name...'>"
-		movie.innerHTML += "<br> <br> <input type='button' onclick='search()' value='Submit'></button> ";
-		// var f = document.getElementById("form");
-		// f.submit(function(e){e.preventDefault()})
+		movie.innerHTML += "<br> <br> <input type='button' onclick='search()' value='Submit'>";
 		id = data["results"][0]["id"];
 		runCredits(id);   
 	})
@@ -101,7 +99,7 @@ let runSearchCast = function (id) {
 		pic = `https://image.tmdb.org/t/p/w500/${data["profile_path"]}`
 		movie.innerHTML += "<br> <br> <img style='border:4px solid;' src = " + pic + " width='200' height='300' />";
 		movie.innerHTML += "<br><br> <input type='search' id='" + key_search2.concat(j) + "' placeholder='Enter movie name...'>";
-		movie.innerHTML += "<br> <br> <input type='button' onclick='search2()' value='Submit'></button>";
+		movie.innerHTML += "<br> <br> <input type='button' onclick='search2()' value='Submit'>";
 		runMovies(id);
 	})
 }
@@ -188,4 +186,5 @@ function search2(){
 document.addEventListener('DOMContentLoaded', getConfig);
 
 //NB: I tried to put everything into a form but I couldn't find any way to resolve the bug of refreshing the page when pressing Enter. 
+//I tried the method given in the assignement explainations but I failed to make it work.
 //I then decided that it was better to not have any bug than have a formal form.
