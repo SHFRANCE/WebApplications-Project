@@ -114,7 +114,6 @@ let runMovies = function (id) {
 	.then(response=>response.json())
 	.then((data)=>{
 		for(i = 0; i < data["cast"].length; i++) { if([data["cast"][i]["title"]][0] != undefined) { list_movies.push([data["cast"][i]["title"]][0].toLowerCase());}}
-	console.log(list_movies);
 	})
 }
 
